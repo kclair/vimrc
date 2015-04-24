@@ -1,5 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+syntax on
+colorscheme morning
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -42,6 +44,8 @@ Bundle 'scrooloose/nerdtree'
 " https://github.com/klen/python-mode
 Bundle 'klen/python-mode'
 
+Plugin 'vim-scripts/CycleColor'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,8 +71,15 @@ augroup vimrc_autocmds
 
 " Powerline setup
 " https://github.com/Lokaltog/powerline-fonts
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set guifont=Meslo\ for\ Powerline
 set laststatus=2
 
 " F2 to toggle file browser
 map <F2> :NERDTreeToggle<CR>
+
+let g:pymode_options_max_line_length = 120 
+let g:pymode_virtualenv_path = 'venv'
+" disable auto-checking.
+" use :PymodeLint to check code in current buffer
+let g:pymode_lint_on_write = 0 
+let g:pymode_lint_checkers = ['pyflakes', 'pylint']
